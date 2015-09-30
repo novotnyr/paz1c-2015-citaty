@@ -9,18 +9,19 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
-public class SuborovyCitatDao {
+public class SuborovyCitatDao implements CitatDao {
+    @Override
     public Citat dajNahodnyCitat() {
-        Set<Citat> vsetkyCitaty = dajVsetkyCitaty();
-        ArrayList<Citat> zoznamCitatov = new ArrayList<Citat>(vsetkyCitaty);
-        
+        List<Citat> zoznamCitatov = dajVsetkyCitaty();
+
         Collections.shuffle(zoznamCitatov);
         
         return zoznamCitatov.get(0);
     }
     
-    public Set<Citat> dajVsetkyCitaty() { 
-        Set<Citat> citaty = new HashSet<Citat>();
+    @Override
+    public List<Citat> dajVsetkyCitaty() { 
+        List<Citat> citaty = new ArrayList<Citat>();
 
         Scanner scanner = null;
         try {
